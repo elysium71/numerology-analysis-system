@@ -5,6 +5,7 @@ class TestNumerologyFunctions(unittest.TestCase):
 
     def setUp(self):
         """Set up resources or data needed for the tests."""
+        # Sample birthdays for testing
         self.valid_birthday = "09-07-2005"
         self.invalid_birthday = "32-13-2020"
         self.lucky_number_5_birthday = "22-05-2003"
@@ -17,6 +18,7 @@ class TestNumerologyFunctions(unittest.TestCase):
 
     def test_calculate_lucky_number(self):
         """Test the calculate_lucky_number function."""
+        # Test different birthdays for lucky number calculation
         self.assertEqual(calculate_lucky_number(self.valid_birthday), 5)
         self.assertEqual(calculate_lucky_number(self.lucky_number_4_birthday), 4)
         self.assertEqual(calculate_lucky_number(self.lucky_number_5_birthday), 5)
@@ -24,6 +26,7 @@ class TestNumerologyFunctions(unittest.TestCase):
 
     def test_determine_lucky_animal(self):
         """Test the determine_lucky_animal function."""
+        # Test animals based on lucky number
         self.assertEqual(determine_lucky_animal(5), "Bears")
         self.assertEqual(determine_lucky_animal(9), "Fish")
         self.assertEqual(determine_lucky_animal(11), "Dolphin")
@@ -31,6 +34,7 @@ class TestNumerologyFunctions(unittest.TestCase):
 
     def test_is_master_number(self):
         """Test the is_master_number function."""
+        # Check for master numbers
         self.assertTrue(is_master_number(11))
         self.assertTrue(is_master_number(22))
         self.assertTrue(is_master_number(33))
@@ -38,6 +42,7 @@ class TestNumerologyFunctions(unittest.TestCase):
 
     def test_find_generation(self):
         """Test the find_generation function."""
+        # Test different generations based on birthday
         self.assertEqual(find_generation(self.silent_gen_birthday), "Silent Generation")
         self.assertEqual(find_generation(self.millennial_birthday), "Millennials")
         self.assertEqual(find_generation(self.generation_z_birthday), "Generation Z")
@@ -45,17 +50,19 @@ class TestNumerologyFunctions(unittest.TestCase):
 
     def test_compare_birthdays(self):
         """Test the compare_birthdays function."""
+        # Compare two different birthdays
         result = compare_birthdays(self.valid_birthday, self.millennial_birthday)
         self.assertIn("Lucky Numbers: Different", result)
         self.assertIn("Lucky Animals: Different", result)
 
+        # Compare identical birthdays
         result = compare_birthdays(self.lucky_number_5_birthday, self.lucky_number_5_birthday)
         self.assertIn("Lucky Numbers: Same", result)
         self.assertIn("Lucky Animals: Same", result)
 
     def tearDown(self):
         """Clean up any resources or reset state after tests."""
-        # No resources need to be cleaned up in this case, but you can put any cleanup code here if needed.
+        # No resources need to be cleaned up in this case
         pass
 
 if __name__ == '__main__':
