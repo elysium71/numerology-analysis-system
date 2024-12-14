@@ -110,3 +110,4 @@ def compare_birthdays(birthday1, birthday2):
 
     return result
 
+
