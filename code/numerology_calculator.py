@@ -1,11 +1,18 @@
+from datetime import datetime # A combination of a date and a tim
+
 def calculate_lucky_number(birthday):
     """
     Calculate the lucky number for a given birthday.
     :param birthday: str, in the format 'DD-MM-YYYY'
     :return: int, the lucky number
     """
-    day, month, year = birthday.split('-')
-
+    # Edge case: Check if the date is valid
+    try:
+        day, month, year = birthday.split('-')
+        datetime(int(year), int(month), int(day))  # Validates the date
+    except ValueError:
+        raise ValueError("Invalid date format or non-existent date.")
+    
     # Sum digits of day, month, and year
     lucky_number = sum(int(digit) for digit in day) + \
                    sum(int(digit) for digit in month) + \
@@ -23,6 +30,9 @@ def determine_lucky_animal(lucky_number):
     :param lucky_number: int, the lucky number
     :return: str, the lucky animal
     """
+    if lucky_number < 1 or lucky_number > 33:
+        return "Unknown"  # Edge case for numbers outside expected range
+    
     animals = {
         1: "Parrot", 2: "Rabbit", 3: "Elephant", 4: "Beetles",
         5: "Bears", 6: "Deer", 7: "Crane", 8: "Horse",
@@ -44,7 +54,12 @@ def find_generation(birthday):
     :param birthday: str, in the format 'DD-MM-YYYY'
     :return: str, the generation name
     """
-    year = int(birthday.split('-')[2])
+    # Edge case: Check if the date is valid
+    try:
+        day, month, year = birthday.split('-')
+        datetime(int(year), int(month), int(day))  # Validates the date
+    except ValueError:
+        raise ValueError("Invalid date format or non-existent date.")
 
     generation_map = {
         range(1901, 1946): "Silent Generation",
@@ -54,11 +69,13 @@ def find_generation(birthday):
         range(1995, 2010): "Generation Z",
         range(2010, 2025): "Generation Alpha"
     }
-
+    
+    year = int(birthday.split('-')[2])
+    
     for year_range, generation in generation_map.items():
         if year in year_range:
             return generation
-
+    
     return "Unknown Generation"
 
 def compare_birthdays(birthday1, birthday2):
@@ -68,6 +85,13 @@ def compare_birthdays(birthday1, birthday2):
     :param birthday2: str, second birthday in the format 'DD-MM-YYYY'
     :return: str, the comparison result
     """
+    # Edge case: Check if the dates are valid
+    try:
+        datetime.strptime(birthday1, "%d-%m-%Y")
+        datetime.strptime(birthday2, "%d-%m-%Y")
+    except ValueError:
+        raise ValueError("One or both dates are in an invalid format.")
+    
     # Calculate lucky numbers and animals for each birthday
     lucky_number1 = calculate_lucky_number(birthday1)
     lucky_number2 = calculate_lucky_number(birthday2)
