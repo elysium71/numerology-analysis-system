@@ -1,9 +1,58 @@
-from numerology_calculator import *
+from numerology_calculator import * 
 
+# Function to get a valid birthday input
+def get_birthday_input(prompt="Enter your birthday (DD-MM-YYYY): "):
+    while True:
+        birthday = input(prompt)
+        if is_valid_date(birthday):  # Validate date format
+            return birthday
+        print("Invalid date format. Please try again.")
+
+# Handle the calculation of lucky number and animal
+def handle_lucky_number_and_animal():
+    birthday = get_birthday_input()
+    try:
+        lucky_number = calculate_lucky_number(birthday)
+        animal = determine_lucky_animal(lucky_number)
+        print("Lucky Number: " + str(lucky_number))
+        print("Lucky Animal: " + animal)
+    except ValueError as e:
+        print("Error: " + str(e))
+
+# Handle checking if a number is a master number
+def handle_master_number_check():
+    try:
+        number = int(input("Enter a number to check: "))
+        if is_master_number(number):
+            print(str(number) + " is a master number!")
+        else:
+            print(str(number) + " is not a master number.")
+    except ValueError:
+        print("Please enter a valid number.")
+
+# Handle checking the user's generation based on their birthday
+def handle_generation_check():
+    birthday = get_birthday_input()
+    try:
+        generation = find_generation(birthday)
+        print("Generation: " + generation)
+    except ValueError as e:
+        print("Error: " + str(e))
+
+# Handle comparing two birthdays
+def handle_birthday_comparison():
+    birthday1 = get_birthday_input("Enter the first birthday (DD-MM-YYYY): ")
+    birthday2 = get_birthday_input("Enter the second birthday (DD-MM-YYYY): ")
+    try:
+        comparison = compare_birthdays(birthday1, birthday2)
+        print(comparison)
+    except ValueError as e:
+        print("Error: " + str(e))
+
+# Main function for the program menu
 def main():
-    print("Welcome to the Numerology Calculator!")  # Display welcome message
-    while True:  # Start an infinite loop to keep the menu running
-        # Display menu options for the user to choose from
+    print("Welcome to the Numerology Calculator!")
+    while True:
         print("\nChoose an option:")
         print("1. Calculate lucky number and animal")
         print("2. Check if a number is a master number")
@@ -11,63 +60,22 @@ def main():
         print("4. Compare two birthdays")
         print("5. Exit")
         
-        # Get the user's choice
         choice = input("Enter your choice (1-5): ")
 
-        # If the user selects option 1, calculate lucky number and animal
         if choice == "1":
-            birthday = input("Enter your birthday (DD-MM-YYYY): ")
-            try:
-                # Calculate lucky number using the birthday input
-                lucky_number = calculate_lucky_number(birthday)
-                # Determine the corresponding lucky animal based on the lucky number
-                animal = determine_lucky_animal(lucky_number)
-                print("Lucky Number: " + str(lucky_number))  # Display the lucky number
-                print("Lucky Animal: " + animal)  # Display the lucky animal
-            except ValueError as e:  # Handle any value errors that occur (e.g., invalid date format)
-                print("Error: " + str(e))
-        
-        # If the user selects option 2, check if a number is a master number
+            handle_lucky_number_and_animal()
         elif choice == "2":
-            try:
-                number = int(input("Enter a number to check: "))  # Get the number from the user
-                if is_master_number(number):  # Check if the number is a master number
-                    print(str(number) + " is a master number!")  # Inform the user if it's a master number
-                else:
-                    print(str(number) + " is not a master number.")  # Inform the user if it's not a master number
-            except ValueError:  # Handle invalid input (non-integer values)
-                print("Please enter a valid number.")
-
-        # If the user selects option 3, find the generation based on birth year
+            handle_master_number_check()
         elif choice == "3":
-            birthday = input("Enter your birthday (DD-MM-YYYY): ")
-            try:
-                # Find the generation based on the birthday
-                generation = find_generation(birthday)
-                print("Generation: " + generation)  # Display the generation
-            except ValueError as e:  # Handle any errors (e.g., invalid date format)
-                print("Error: " + str(e))
-
-        # If the user selects option 4, compare two birthdays
+            handle_generation_check()
         elif choice == "4":
-            birthday1 = input("Enter the first birthday (DD-MM-YYYY): ")
-            birthday2 = input("Enter the second birthday (DD-MM-YYYY): ")
-            try:
-                # Compare the two birthdays and display the result
-                comparison = compare_birthdays(birthday1, birthday2)
-                print(comparison)
-            except ValueError as e:  # Handle any errors (e.g., invalid date format)
-                print("Error: " + str(e))
-
-        # If the user selects option 5, exit the program
+            handle_birthday_comparison()
         elif choice == "5":
-            print("Thank you for using the Numerology Calculator. Goodbye!")  # Display exit message
-            break  # Break the loop and exit the program
-
-        else:  # Handle invalid menu choices
+            print("Thank you for using the Numerology Calculator. Goodbye!")
+            break
+        else:
             print("Invalid choice. Please try again.")
 
-# Check if the script is being run directly (not imported as a module)
 if __name__ == "__main__":
-    main()  # Call the main function to start the program
+    main()
 
