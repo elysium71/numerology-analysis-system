@@ -1,5 +1,21 @@
 from datetime import datetime # A combination of a date and a tim
 
+
+
+# Function to validate the date format
+def is_valid_date(date_str):
+    """
+    Check if the given date string is in the format 'DD-MM-YYYY' and is a valid date.
+    :param date_str: str, input date string
+    :return: bool, True if the date is valid, False otherwise
+    """
+    try:
+        datetime.strptime(date_str, "%d-%m-%Y")
+        return True
+    except ValueError:
+        return False
+
+
 def calculate_lucky_number(birthday):
     """
     Calculate the lucky number for a given birthday.

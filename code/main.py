@@ -1,5 +1,6 @@
 from numerology_calculator import * 
 
+
 # Function to get a valid birthday input
 def get_birthday_input(prompt="Enter your birthday (DD-MM-YYYY): "):
     while True:
