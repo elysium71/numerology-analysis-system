@@ -83,11 +83,11 @@ Screenshot : ![Screenshot1](Screenshot1.png)
 ### **Modularity Concepts**
 The following modularity principles were applied:
 
-- **Low Coupling**: Each function is independent and does not depend on the internal workings of other modules. For example, the `calculate_lucky_number` module relies only on the input provided and does not interact with other modules directly.
+- **Low Coupling**:
+- 
+- **High Cohesion**: 
 
-- **High Cohesion**: Each function performs a single, well-defined task. For instance, `determine_lucky_animal` only maps lucky numbers to animals, and `is_master_number` checks for master numbers. This makes the code easier to maintain and understand.
-
-- **Avoiding Redundancy**: Code duplication has been minimized by reusing modules wherever possible. For example, the `validate_birthday` function is used in multiple modules to ensure consistency in date validation.
+- **Avoiding Redundancy**: 
 
 ### **Review Checklist**
 
@@ -100,6 +100,118 @@ No significant revisions were required.
 
 
 ### Black-box test cases
+# Test Design (Black Box Testing)
+
+## Overview
+This document covers the **Black Box Testing** for the module, including **Equivalence Partitioning (EP)** and **Boundary Value Analysis (BVA)** approaches. The test data includes specific values like the last four digits of your student ID (2061) and the corresponding expected results.
+
+---
+
+## **Module 1: `calculate_lucky_number` (Birthday-based lucky number calculation)**
+
+### **Equivalence Partitioning (EP)**
+
+| **Sr.** | **Boundary Value** | **Test Data**                             | **Expected Output**                             |
+|---------|--------------------|-------------------------------------------|-------------------------------------------------|
+| 1       | Valid input (valid date) | `03-05-1995`                            | Lucky Number: `9`                               |
+| 2       | Invalid date format    | `32-13-2024`                            | `ValueError: Invalid date format or non-existent date.`  |
+| 3       | Edge case (single digit day) | `01-01-2000`                            | Lucky Number: `3`                               |
+| 4       | Edge case (multi-digit year) | `15-09-1987`                            | Lucky Number: `6`                               |
+| 5       | Master number (11)    | `11-11-1985`                             | Lucky Number: `11`                              |
+| 6       | Master number (22)    | `22-02-1982`                             | Lucky Number: `22`                              |
+| 7       | Invalid date, non-existent month | `15-13-1998`                         | `ValueError: Invalid date format or non-existent date.` |
+
+### **Boundary Value Analysis (BVA)**
+
+| **Sr.** | **Boundary Value** | **Test Data**                             | **Expected Output**                             |
+|---------|--------------------|-------------------------------------------|-------------------------------------------------|
+| 1       | Near valid boundary (date close to range) | `31-12-1999`                            | Lucky Number: `7`                               |
+| 2       | Near invalid boundary (invalid date) | `29-02-2024`                            | Lucky Number: `5`                               |
+
+---
+
+## **Module 2: `determine_lucky_animal` (Determine the lucky animal based on lucky number)**
+
+### **Equivalence Partitioning (EP)**
+
+| **Sr.** | **Boundary Value** | **Test Data**                             | **Expected Output**                             |
+|---------|--------------------|-------------------------------------------|-------------------------------------------------|
+| 1       | Valid input (lucky number within range) | `6`                                      | Lucky Animal: `Deer`                            |
+| 2       | Boundary value (master number) | `11`                                     | Lucky Animal: `Dolphin`                         |
+| 3       | Invalid input (lucky number out of range) | `35`                                     | Lucky Animal: `Unknown`                         |
+| 4       | Edge case (minimum valid number) | `1`                                       | Lucky Animal: `Parrot`                          |
+
+### **Boundary Value Analysis (BVA)**
+
+| **Sr.** | **Boundary Value** | **Test Data**                             | **Expected Output**                             |
+|---------|--------------------|-------------------------------------------|-------------------------------------------------|
+| 1       | Boundary value (maximum valid number) | `33`                                     | Lucky Animal: `Turtle`                          |
+| 2       | Boundary for unknown input | `0`                                      | Lucky Animal: `Unknown`                         |
+
+---
+
+## **Module 3: `find_generation` (Determine the generation based on birth year)**
+
+### **Equivalence Partitioning (EP)**
+
+| **Sr.** | **Boundary Value** | **Test Data**                             | **Expected Output**                             |
+|---------|--------------------|-------------------------------------------|-------------------------------------------------|
+| 1       | Valid generation (Baby Boomers) | `15-07-1960`                            | Generation: `Baby Boomers`                      |
+| 2       | Valid generation (Millennials)  | `22-03-1995`                            | Generation: `Millennials`                       |
+| 3       | Valid generation (Generation Z) | `25-12-2005`                            | Generation: `Generation Z`                      |
+| 4       | Invalid generation (before 1900) | `25-12-1899`                            | Generation: `Unknown Generation`                |
+| 5       | Invalid generation (after 2025) | `10-05-2030`                            | Generation: `Unknown Generation`                |
+
+### **Boundary Value Analysis (BVA)**
+
+| **Sr.** | **Boundary Value** | **Test Data**                             | **Expected Output**                             |
+|---------|--------------------|-------------------------------------------|-------------------------------------------------|
+| 1       | Edge boundary (Baby Boomers) | `01-01-1946`                            | Generation: `Baby Boomers`                      |
+| 2       | Edge boundary (Generation Alpha) | `01-01-2010`                            | Generation: `Generation Alpha`                  |
+
+---
+
+## **Module 4: `compare_birthdays` (Compare lucky numbers and animals of two birthdays)**
+
+### **Equivalence Partitioning (EP)**
+
+| **Sr.** | **Boundary Value** | **Test Data**                             | **Expected Output**                             |
+|---------|--------------------|-------------------------------------------|-------------------------------------------------|
+| 1       | Same lucky numbers and animals | `03-05-1995`, `03-05-1995`                | Lucky Numbers: Same, Lucky Animals: Same       |
+| 2       | Different lucky numbers and animals | `15-09-1987`, `25-12-1983`                | Lucky Numbers: Different, Lucky Animals: Different |
+| 3       | Invalid date format in one of the inputs | `03-05-1995`, `32-13-2024`                | `ValueError: One or both dates are in an invalid format.` |
+
+### **Boundary Value Analysis (BVA)**
+
+| **Sr.** | **Boundary Value** | **Test Data**                             | **Expected Output**                             |
+|---------|--------------------|-------------------------------------------|-------------------------------------------------|
+| 1       | Compare valid boundary dates | `01-01-1990`, `01-01-1991`                | Lucky Numbers: Different, Lucky Animals: Different |
+| 2       | Compare dates near boundary values | `31-12-1999`, `01-01-2000`                | Lucky Numbers: Different, Lucky Animals: Different |
+
+---
+
+## **Data Types & Methods**
+
+1. **Integer**: Used for lucky number calculations (e.g., summing digits of day, month, year).
+2. **String**: Used for handling date inputs (in `DD-MM-YYYY` format).
+3. **Boolean**: Used to determine if a number is a master number in `is_master_number`.
+
+---
+
+## **Explanation of Design**:
+
+- **Equivalence Partitioning (EP)**: This approach is used to test data that fall within valid and invalid equivalence classes. For example, valid and invalid dates, lucky numbers, and generation years.
+- **Boundary Value Analysis (BVA)**: BVA tests the edges of valid input ranges, which are crucial for date validation and generation classification.
+- **Data Types**: All three primary data types (integer, string, and Boolean) are tested to ensure that the functions handle various input types correctly.
+- **Testing Import/Export Methods**: 
+    - **Parameter passing and return values**: Methods like `calculate_lucky_number`, `determine_lucky_animal`, and `compare_birthdays` pass parameters and return values.
+    - **Keyboard input and screen output**: Simulated with direct function calls in the test cases.
+    - **File read/write**: While not explicitly included here, these methods could be tested with appropriate file I/O scenarios if integrated.
+
+### **Assumptions**:
+- The **date format** is strictly `DD-MM-YYYY`.
+- The **lucky number range** is restricted to 1–33, with master numbers 11, 22, and 33.
+- For **generation classification**, the valid years are between 1901 and 2025, and values outside this range return "Unknown Generation".
 
 
 ---
