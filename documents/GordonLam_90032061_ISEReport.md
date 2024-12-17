@@ -17,38 +17,38 @@ This project is the final assignment of ISEN1000. User can input their date of b
 
 ## Module Descriptions
 
-### **is_valid_date**
+### **is_valid_date()**
 - **Description**: it will check the date of birth with the format DD-MM-YYYY is it a valid date with the built in function datetime.
 - **Inputs**: A string in the format `DD-MM-YYYY`.
 - **Outputs**: Boolen, True if the date is valid, false if it's not.
-- 
-### **calculate_lucky_number**
+
+### **calculate_lucky_number()**
 - **Description**: it will calculate the lucky number for a given birthday.
 - **Inputs**: A string in the format `DD-MM-YYYY`.
 - **Outputs**: Returns a integer, the lucky number
 
-### **determine_lucky_animal**
+### **determine_lucky_animal()**
 - **Description**: Determine the lucky animal bvased on the lucky number
 - **Inputs**: An integer, the lucky number
 - **Outputs**: A string, the lucky animal.
 
-### **is_master_number**
+### **is_master_number()**
 - **Description**: Check if a lucky number is a master number or no.
 - **Inputs**: An integer, the lucky number
 - **Outputs**: boolen, True if it's a master number, false if it's not.
 
-### **find_generation**
+### **find_generation()**
 - **Description**: Determine the generation of person based on their birth year.
 - **Inputs**: A string in the format `DD-MM-YYYY`.
 - **Outputs**: A string, the generation name.
 
-### **compare_birthdays**
+### **compare_birthdays()**
 - **Description**: Compares two birthdays to check if their lucky numbers and animals are the same.
 - **Inputs**: Two strings in the format `DD-MM-YYYY`.
 - **Outputs**: String, the comparison result.
 
 ### Design Decisions
-The modular design ensures reusability, readability, and easier testing. Each function has their own clear purpose, and each input/output handing is consistent across all part. Assumeing that the input are in the DD-MM-YYYY format, and betwwen 1901 to 2025.
+The modular design ensures reusability, readability, and easier testing. Each function has their own clear purpose, and each input/output handing is consistent across all part. Assumeing that the input are in the DD-MM-YYYY format, and between 1901 to 2025 (for the find_generation() funcation only).
 
 ---
 
@@ -84,7 +84,7 @@ Screenshot : ![Screenshot1](Screenshot1.png)
 The following modularity principles were applied:
 
 - **Low Coupling**:
-- 
+
 - **High Cohesion**: 
 
 - **Avoiding Redundancy**: 
@@ -101,16 +101,168 @@ No significant revisions were required.
 
 ### Black-box test cases
 
+#### Test Cases
+
+This part organizes test cases by function, separating **Equivalence Partitioning (EP)** and **Boundary Value Analysis (BVA)** test cases.
 
 ---
 
-### While-box test cases
+#### **1. Function: `calculate_lucky_number`**
+
+##### **Test Cases (EP)**
+
+| **Sr.** | **Test Case**                  | **Test Data**        | **Expected Output**   |
+|---------|--------------------------------|----------------------|------------------------|
+| 1       | Calculate Lucky Number            | "01-06-2001"                      | 1                                          |
+| 2       | Calculate Lucky Number            | "01-06-2003"                      | 3                                          |
+| 3       | Calculate Lucky Number            | "01-06-2004"                      | 4                                          |
+| 4       | Calculate Lucky Number            | "01-06-2005"                      | 5                                          |
+| 5       | Calculate Lucky Number            | "01-06-2006"                      | 6                                          |
+| 6       | Calculate Lucky Number            | "01-06-2007"                      | 7                                          |
+| 7       | Calculate Lucky Number            | "01-06-2008"                      | 8                                          |
+| 8       | Calculate Lucky Number            | "01-06-2009"                      | 9                                          |
+| 9       | Calculate Lucky Number            | "01-06-2002"                      | 11                                         |
+| 10      | Calculate Lucky Number            | "13-11-1906"                      | 22                                         |
+| 11      | Calculate Lucky Number            | "09-09-1905"                      | 33                                         |
+| 12      | Calculate Lucky Number            | "32-13-2024"                      | "Invalid Date"     
+
+##### **Boundary Value Analysis (BVA)**
+
+| **Sr.** | **Boundary Value**                | **Test Data**     | **Expected Output**   |
+|---------|----------------------------------|-------------------|-----------------------|
+| 1       | Min Test Data for Calculate Lucky Number | "01-01-0001"                       | 3                                          |
+| 2       | Max Test Data for Calculate Lucky Number | "31-12-9999"                       | 7                                          |
+
+#### **2. Function: `determine_lucky_animal`**
+
+##### **Test Cases (EP)**
+
+| **Sr.** | **Test Case**                     | **Test Data**    | **Expected Output**   |
+|---------|----------------------------------|------------------|-----------------------|
+| 1      | Determine Lucky Animal            | 1                                 | "Parrot"                                   |
+| 2      | Determine Lucky Animal            | 2                                 | "Rabbit"                                   |
+| 3      | Determine Lucky Animal            | 3                                 | "Elephant"                                 |
+| 4      | Determine Lucky Animal            | 4                                 | "Beetles"                                  |
+| 5      | Determine Lucky Animal            | 5                                 | "Bears"                                    |
+| 6      | Determine Lucky Animal            | 6                                 | "Deer"                                     |
+| 7      | Determine Lucky Animal            | 7                                 | "Crane"                                    |
+| 8      | Determine Lucky Animal            | 8                                 | "Horse"                                    |
+| 9      | Determine Lucky Animal            | 9                                 | "Fish"                                     |
+| 10      | Determine Lucky Animal            | 11                                | "Dolphin"                                  |
+| 11      | Determine Lucky Animal            | 22                                | "Lion"                                     |
+| 12      | Determine Lucky Animal            | 33                                | "Turtle"                                   |
+| 13      | Determine Lucky Animal            | 0                                 | "Unknown Animal"                           |
+| 14      | Determine Lucky Animal            | 100                               | "Unknown Animal"                           |
+#### **Boundary Value Analysis (BVA)**
+
+| **Sr.** | **Boundary Value**                | **Test Data**    | **Expected Output**   |
+|---------|----------------------------------|------------------|-----------------------|
+| 1       | Min Boundary                     | 0                | "Unknown Animal"      |
+| 2      | Max Invalid Boundary             | 44               | "Unknown Animal"      |
+
+---
+
+#### **3. Function: `is_master_number`**
+
+##### **Test Cases (EP)**
+
+| **Sr.** | **Test Case**                    | **Test Data**    | **Expected Output**   |
+|---------|---------------------------------|------------------|-----------------------|
+| 1       | Master Number (Valid: 11)       | 11               | True                  |
+| 2       | Master Number (Valid: 22)       | 22               | True                  |
+| 3       | Master Number (Valid: 33)       | 33               | True                  |
+| 4       | Non-Master Number               | 5                | False                 |
+| 5       | Non-Master Number               | 8                | False                 |
+
+#### **Boundary Value Analysis (BVA)**
+
+| **Sr.** | **Boundary Value**               | **Test Data**    | **Expected Output**   |
+|---------|---------------------------------|------------------|-----------------------|
+| 1       | Just Before Master Number       | 10               | False                 |
+| 2       | Just After Master Number        | 12               | False                 |
+
+---
+
+#### **4. Function: `find_generation`**
+
+##### **Test Cases (EP)**
+
+| **Sr.** | **Test Case**                    | **Test Data**        | **Expected Output**   |
+|---------|---------------------------------|----------------------|-----------------------|
+| 1       | Silent Generation               | "19-09-1907"         | "Silent Generation"   |
+| 2       | Baby Boomers                    | "19-09-1950"         | "Baby Boomers"        |
+| 3       | Generation X                    | "19-09-1967"         | "Generation X"        |
+| 4       | Millennials                     | "19-09-1987"         | "Millennials"         |
+| 5       | Generation Z                    | "19-09-1997"         | "Generation Z"        |
+| 6       | Generation Alpha                | "19-09-2017"         | "Generation Alpha"    |
+| 7       | Invalid Date (Before 1900)      | "01-01-1700"         | "Invalid Date"        |
+| 8       | Invalid Date (After 2099)       | "01-01-2100"         | "Invalid Date"        |
+
+#### **Boundary Value Analysis (BVA)**
+
+| **Sr.** | **Boundary Value**               | **Test Data**        | **Expected Output**   |
+|---------|---------------------------------|----------------------|-----------------------|
+| 1       | Boundary for Find Generation       | "00-01-1901"                       | "Invalid Date"                             |
+| 2       | Boundary for Find Generation       | "01-01-1901"                       | "Silent Generation"                        |
+| 3       | Boundary for Find Generation       | "31-12-1901"                       | "Silent Generation"                        |
+| 4      | Boundary for Find Generation       | "32-12-1901"                       | "Invalid Date"                             |
+| 5      | Boundary for Find Generation       | "00-01-1946"                       | "Invalid Date"                             |
+| 6      | Boundary for Find Generation       | "01-01-1946"                       | "Baby Boomers"                             |
+| 7      | Boundary for Find Generation       | "31-12-1964"                       | "Baby Boomers"                             |
+| 8      | Boundary for Find Generation       | "32-12-1964"                       | "Invalid Date"                             |
+| 9      | Boundary for Find Generation       | "00-01-1965"                       | "Invalid Date"                             |
+| 10      | Boundary for Find Generation       | "01-01-1965"                       | "Generation X"                             |
+| 11      | Boundary for Find Generation       | "31-12-1979"                       | "Generation X"                             |
+| 12      | Boundary for Find Generation       | "32-12-1979"                       | "Invalid Date"                             |
+| 13      | Boundary for Find Generation       | "00-01-1980"                       | "Invalid Date"                             |
+| 14      | Boundary for Find Generation       | "01-01-1980"                       | "Millennials"                              |
+| 15      | Boundary for Find Generation       | "31-12-1994"                       | "Millennials"                              |
+| 16      | Boundary for Find Generation       | "32-12-1994"                       | "Invalid Date"                             |
+| 17      | Boundary for Find Generation       | "00-01-1995"                       | "Invalid Date"                             |
+| 18      | Boundary for Find Generation       | "01-01-1995"                       | "Generation Z"                             |
+| 19      | Boundary for Find Generation       | "31-12-2009"                       | "Generation Z"                             |
+| 20      | Boundary for Find Generation       | "32-12-2009"                       | "Invalid Date"                             |
+| 21      | Boundary for Find Generation       | "00-01-2010"                       | "Invalid Date"                             |
+| 22      | Boundary for Find Generation       | "01-01-2010"                       | "Generation Alpha"                         |
+| 23      | Boundary for Find Generation       | "31-12-2024"                       | "Generation Alpha"                         |
+| 24      | Boundary for Find Generation       | "32-12-2024"                       | "Invalid Date"                             |
+---
+
+#### **5. Function: `compare_birthdays`**
+
+##### **Test Cases (EP)**
+
+| **Sr.** | **Test Case**                   | **Test Data**                     | **Expected Output**                        |
+|---------|--------------------------------|-----------------------------------|-------------------------------------------|
+| 1       | Compare Different Birthdays    | "01-06-2001", "15-08-1995"        | "Lucky Numbers: Different, Lucky Animals: Different" |
+| 2       | Compare Same Birthdays         | "01-06-2005", "01-06-2005"        | "Lucky Numbers: Same, Lucky Animals: Same" |
+
+#### **Boundary Value Analysis (BVA)**
+
+| **Sr.** | **Boundary Value**              | **Test Data**                     | **Expected Output**                        |
+|---------|--------------------------------|-----------------------------------|-------------------------------------------|
+| 1       | Edge Case Min Date             | "01-01-0001", "31-12-9999"        | "Lucky Numbers: Different, Lucky Animals: Different" |
+
+---
+
+### White-box test cases
+
 
 
 
 ---
 ### Test Implementation and Test Execution
 
+### **Running the Test Code**
+```bash
+python3 -m unittest test_numerology.py
+```
+
+### **Test Results**
+- **Pass**: 5 tests passed.
+- **Fail**: None.
+
+Screenshot : ![Screenshot2](Screenshot2.png)
 
 ---
 
