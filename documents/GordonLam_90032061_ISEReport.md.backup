@@ -83,11 +83,11 @@ Screenshot : ![Screenshot1](Screenshot1.png)
 ### **Modularity Concepts**
 The following modularity principles were applied:
 
-- **Low Coupling**:
-- 
-- **High Cohesion**: 
+- **Low Coupling**: Each function is independent and does not depend on the internal workings of other modules. For example, the `calculate_lucky_number` module relies only on the input provided and does not interact with other modules directly.
 
-- **Avoiding Redundancy**: 
+- **High Cohesion**: Each function performs a single, well-defined task. For instance, `determine_lucky_animal` only maps lucky numbers to animals, and `is_master_number` checks for master numbers. This makes the code easier to maintain and understand.
+
+- **Avoiding Redundancy**: Code duplication has been minimized by reusing modules wherever possible. For example, the `validate_birthday` function is used in multiple modules to ensure consistency in date validation.
 
 ### **Review Checklist**
 
