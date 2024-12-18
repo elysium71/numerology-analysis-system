@@ -17,6 +17,10 @@ This project is the final assignment of ISEN1000. User can input their date of b
 
 ## Module Descriptions
 
+### **is_valid_date()**
+- **Description**: it will check the date of birth with the format DD-MM-YYYY is it a valid date with the built in function datetime.
+- **Inputs**: A string in the format `DD-MM-YYYY`.
+- **Outputs**: Boolen, True if the date is valid, false if it's not.
 
 ### **calculate_lucky_number()**
 - **Description**: it will calculate the lucky number for a given birthday.
@@ -150,11 +154,8 @@ This part organizes test cases by function, separating **Equivalence Partitionin
 | 13      | Determine Lucky Animal            | 0                                 | "Unknown Animal"                           |
 | 14      | Determine Lucky Animal            | 100                               | "Unknown Animal"                           |
 #### **Boundary Value Analysis (BVA)**
+boundary Value Analysis are not possible to test since lucky animal is fixed and there are no cases is in between.
 
-| **Sr.** | **Boundary Value**                | **Test Data**    | **Expected Output**   |
-|---------|----------------------------------|------------------|-----------------------|
-| 1       | Min Boundary                     | 0                | "Unknown Animal"      |
-| 2      | Max Invalid Boundary             | 44               | "Unknown Animal"      |
 
 ---
 
@@ -171,11 +172,7 @@ This part organizes test cases by function, separating **Equivalence Partitionin
 | 5       | Non-Master Number               | 8                | False                 |
 
 #### **Boundary Value Analysis (BVA)**
-
-| **Sr.** | **Boundary Value**               | **Test Data**    | **Expected Output**   |
-|---------|---------------------------------|------------------|-----------------------|
-| 1       | Just Before Master Number       | 10               | False                 |
-| 2       | Just After Master Number        | 12               | False                 |
+boundary Value Analysis are not possible to test since master number are fixed and there are no cases is in between
 
 ---
 
@@ -231,13 +228,10 @@ This part organizes test cases by function, separating **Equivalence Partitionin
 | **Sr.** | **Test Case**                   | **Test Data**                     | **Expected Output**                        |
 |---------|--------------------------------|-----------------------------------|-------------------------------------------|
 | 1       | Compare Different Birthdays    | "01-06-2001", "15-08-1995"        | "Lucky Numbers: Different, Lucky Animals: Different" |
-| 2       | Compare Same Birthdays         | "01-06-2005", "01-06-2005"        | "Lucky Numbers: Same, Lucky Animals: Same" |
+| 2       | Compare Same Birthdays         | "06-01-2050", "01-06-2005"        | "Lucky Numbers: Same, Lucky Animals: Same" |
 
 #### **Boundary Value Analysis (BVA)**
-
-| **Sr.** | **Boundary Value**              | **Test Data**                     | **Expected Output**                        |
-|---------|--------------------------------|-----------------------------------|-------------------------------------------|
-| 1       | Edge Case Min Date             | "01-01-0001", "31-12-9999"        | "Lucky Numbers: Different, Lucky Animals: Different" |
+boundary Value Analysis are not possible to test since since there are no cases is in between.
 
 ---
 
