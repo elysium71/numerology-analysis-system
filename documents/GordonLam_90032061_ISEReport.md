@@ -20,35 +20,47 @@ This project is the final assignment of ISEN1000. User can input their date of b
 ### **is_valid_date()**
 - **Description**: it will check the date of birth with the format DD-MM-YYYY is it a valid date with the built in function datetime.
 - **Inputs**: A string in the format `DD-MM-YYYY`.
-- **Outputs**: Boolen, True if the date is valid, false if it's not.
+- **Outputs**: Boolen, True if the date is valid.
+- **Edge Case**: It will return False if the data is not valid.
 
 ### **calculate_lucky_number()**
-- **Description**: it will calculate the lucky number for a given birthday.
+- **Description**: it will calculate the lucky number for a given birthday. A built in python library function (datetime) is used to validate the input date.
 - **Inputs**: A string in the format `DD-MM-YYYY`.
 - **Outputs**: Returns a integer, the lucky number
+- **Edge Case**: It raises a ValueError with a message if the provied date is invalid.
 
 ### **determine_lucky_animal()**
 - **Description**: Determine the lucky animal bvased on the lucky number
 - **Inputs**: An integer, the lucky number
 - **Outputs**: A string, the lucky animal.
+- **Edge Case**: It returns "Unknown" if the number is outside the lucky number (anyhting else than 1-9, 11, 22 and 33).
 
 ### **is_master_number()**
 - **Description**: Check if a lucky number is a master number or no.
 - **Inputs**: An integer, the lucky number
 - **Outputs**: boolen, True if it's a master number, false if it's not.
+- **Edge Case**: It returns False if the number is not a master number.
 
 ### **find_generation()**
 - **Description**: Determine the generation of person based on their birth year.
 - **Inputs**: A string in the format `DD-MM-YYYY`.
 - **Outputs**: A string, the generation name.
+- **Edge Case**: It raises a ValueError if the birthdata is invalid. It return "Unknown Generation" if the year is not found in the range.
 
 ### **compare_birthdays()**
 - **Description**: Compares two birthdays to check if their lucky numbers and animals are the same.
 - **Inputs**: Two strings in the format `DD-MM-YYYY`.
 - **Outputs**: String, the comparison result.
+- **Edge Case**: It raises a ValueError if the birthdays is invalid.
 
 ### Design Decisions
-The modular design ensures reusability, readability, and easier testing. Each function has their own clear purpose, and each input/output handing is consistent across all part. Assumeing that the input are in the DD-MM-YYYY format, and between 1901 to 2025 (for the find_generation() funcation only).
+Modular Design: The modular design ensures reusability, readability, and easier testing. 
+
+Consistency: Each function has their own clear purpose, and each input/output handing is consistent across all part. 
+
+Input Assumptions: Assumeing that the input are in the DD-MM-YYYY format, and between 1901 to 2025 (for the find_generation() funcation only).
+
+Edge Case Handling: The code include error handling if there are invalid input, such as incorrect date formats or out of range values and return a error messages or false to user.
 
 ---
 
@@ -83,14 +95,19 @@ Screenshot : ![Screenshot1](Screenshot1.png)
 ### **Modularity Concepts**
 The following modularity principles were applied:
 
-- **Low Coupling**:
+- **Low Coupling**: Each function is independent, it does not relay on the internal other modules. For example, the "calculate_lucky_number" function only relies on the input provided and not interacting with other modules.
 
-- **High Cohesion**: 
+- **High Cohesion**: Each funcation performs a single and well defined task. For example "determine_lucky_animal" only conver lucky numbers to animals and "is_master_number" only checks for master numbers. sperate funcation can make the code more easy to understand and future maintain.
 
-- **Avoiding Redundancy**: 
+- **Avoiding Redundancy**: Code duplication has been minimized, and reusing modules wherever it's possible. For example "validate_birthday" funcation is used in different funcation to check the date is it valided.
 
 ### **Review Checklist**
 
+| **Sr.** | **Question**                  | **Y/N**        | **Description**   |
+|---------|--------------------------------|----------------------|------------------------|
+| 1       | Is each funcation working independently | Yes    | All funcation are working independently|
+| 2       | Does each funcation iuse less than 5 parameters| Yes    | All funcation use fewer than 5 parameters|
+| 3       | Do modules communicate with each other using well-defined interfaces rather than accessing each other’s internal data? | Yes    | Modules interact only through defined function calls and parameters. |
 
 ### **Revised Module Descriptions**
 No significant revisions were required.
@@ -154,8 +171,11 @@ This part organizes test cases by function, separating **Equivalence Partitionin
 | 13      | Determine Lucky Animal            | 0                                 | "Unknown Animal"                           |
 | 14      | Determine Lucky Animal            | 100                               | "Unknown Animal"                           |
 #### **Boundary Value Analysis (BVA)**
-boundary Value Analysis are not possible to test since lucky animal is fixed and there are no cases is in between.
 
+| **Sr.** | **Boundary Value**                | **Test Data**    | **Expected Output**   |
+|---------|----------------------------------|------------------|-----------------------|
+| 1       | Min Boundary                     | 0                | "Unknown Animal"      |
+| 2      | Max Invalid Boundary             | 44               | "Unknown Animal"      |
 
 ---
 
@@ -172,7 +192,11 @@ boundary Value Analysis are not possible to test since lucky animal is fixed and
 | 5       | Non-Master Number               | 8                | False                 |
 
 #### **Boundary Value Analysis (BVA)**
-boundary Value Analysis are not possible to test since master number are fixed and there are no cases is in between
+
+| **Sr.** | **Boundary Value**               | **Test Data**    | **Expected Output**   |
+|---------|---------------------------------|------------------|-----------------------|
+| 1       | Just Before Master Number       | 10               | False                 |
+| 2       | Just After Master Number        | 12               | False                 |
 
 ---
 
@@ -228,10 +252,13 @@ boundary Value Analysis are not possible to test since master number are fixed a
 | **Sr.** | **Test Case**                   | **Test Data**                     | **Expected Output**                        |
 |---------|--------------------------------|-----------------------------------|-------------------------------------------|
 | 1       | Compare Different Birthdays    | "01-06-2001", "15-08-1995"        | "Lucky Numbers: Different, Lucky Animals: Different" |
-| 2       | Compare Same Birthdays         | "06-01-2050", "01-06-2005"        | "Lucky Numbers: Same, Lucky Animals: Same" |
+| 2       | Compare Same Birthdays         | "01-06-2005", "01-06-2005"        | "Lucky Numbers: Same, Lucky Animals: Same" |
 
 #### **Boundary Value Analysis (BVA)**
-boundary Value Analysis are not possible to test since since there are no cases is in between.
+
+| **Sr.** | **Boundary Value**              | **Test Data**                     | **Expected Output**                        |
+|---------|--------------------------------|-----------------------------------|-------------------------------------------|
+| 1       | Edge Case Min Date             | "01-01-0001", "31-12-9999"        | "Lucky Numbers: Different, Lucky Animals: Different" |
 
 ---
 
