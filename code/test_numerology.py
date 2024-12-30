@@ -1,5 +1,5 @@
 import unittest
-from numerology_calculator import calculate_lucky_number, determine_lucky_animal, is_master_number, find_generation, compare_birthdays
+from numerology_calculator import calculate_lucky_number, determine_lucky_animal, is_master_number, find_generation, compare_birthdays, is_valid_date
 
 
 class TestNumerologyFunctions(unittest.TestCase):
@@ -14,6 +14,21 @@ class TestNumerologyFunctions(unittest.TestCase):
         """Clean up resources after each test."""
         self.default_test_data = None
         print("Teardown complete.")
+
+    def test_is_valid_date(self):
+        """Test the is_valid_date function."""
+        test_cases = [
+            ("01-06-2001", True),
+            ("29-02-2020", True),  # Leap year
+            ("29-02-2019", False),  # Non-leap year
+            ("32-12-2020", False),  # Invalid day
+            ("01-13-2020", False),  # Invalid month
+            ("31-04-2020", False),  # Invalid day for the month
+        ]
+        for date, expected in test_cases:
+            with self.subTest(date=date):
+                self.assertEqual(is_valid_date(date), expected)
+
 
     def test_calculate_lucky_number(self):
         """Test the calculate_lucky_number function."""
@@ -129,4 +144,5 @@ class TestNumerologyFunctions(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
 

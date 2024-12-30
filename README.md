@@ -18,6 +18,9 @@ To run the program, use the following command:
 Python 3.x \
 Linux Environment
 
+## Report file
+A report have been provided in the document file.
+
 ## Version
 
 v1.0 added README, Completed first version of numerology_calculator.py test_numerology.py 
