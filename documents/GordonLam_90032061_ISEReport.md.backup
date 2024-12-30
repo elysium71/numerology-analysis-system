@@ -11,7 +11,9 @@
 
 ## Introduction
 
-This project is the final assignment of ISEN1000. User can input their date of birth in the format DD-MM-YYYY, to calculate a person's lucky number and corresponding animal, check if a number is a master number, and find generation based on birth year. Finally, this project compares the numerology of two birthdays. This project uses a modular way, making it easier to manage and test. It also include a main funcation for user to input their own date of birth and use the calculator. Both black-box testing and white-box testing were done to ensure function quality. Version control is also used to keep track the project development.
+This project is the final assignment of ISEN1000, user can input the date with the format of (DD-MM-YYYY) to calcuate a person's lucky number and animals. it will also check is it a master number and uses birth of date to find the generation. Beside that, it also compares the numerology of two birthday.
+
+A modular way is used to make the code more easy to manage and test. It have also incliude a main funcation to let user inputer their birth of date. Both black-box testing and white-box testing were done to ensure code quality. Version control is also used to track the project development.
 
 ---
 
@@ -102,11 +104,32 @@ The following modularity principles were applied:
 - **Avoiding Redundancy**: Code duplication has been minimized, and reusing modules wherever it's possible. For example "validate_birthday" funcation is used in different funcation to check the date is it valided.
 
 ### **Review Checklist**
+Sr. 1-5: Coupling. 6-10: Low cohesion, 11-15: Redundancy, 15-20: Additional considerations
 
-| **Sr.** | **Question**                  | **Y/N**        | **Description**   |
-|---------|--------------------------------|----------------------|------------------------|
-| 1       | Is each funcation working independently | Yes    | All funcation are working independently|
-| 2       | Does each funcation i| Yes    | All functions use fewer than 5 parameters for simplicity and clarity. |
+| **Sr.** | **Question**                                                      | **Y/N** | **Description**                                                     |
+|---------|------------------------------------------------------------------|--------|---------------------------------------------------------------------|
+| 1       | Does each function or method operate independently without requiring excessive information from other functions or methods? | Yes    | All functions are designed to work independently using minimal input. |
+| 2       | Does each function or method have a minimal number of parameters (ideally fewer than 5)? | Yes    | All functions use fewer than 5 parameters for simplicity and clarity. |
+| 3       | Do modules communicate with each other using well-defined interfaces rather than accessing each other’s internal data? | Yes    | Modules interact only through defined function calls and parameters. |
+| 4       | Are functions or methods dependent on external libraries only where necessary? | Yes    | Only standard Python libraries are used for date validation and calculations. |
+| 5       | Are dependencies between modules or components clearly defined? | Yes    | Dependencies are defined clearly, and modules rely on simple, independent logic. |
+| 6       | Does each class/function have a single, well-defined responsibility? | Yes    | Each function is designed to handle a single, specific task. |
+| 7       | Are functions or methods concise and focused on a single task? | Yes    | Functions are concise and focus on a single aspect of numerology calculation. |
+| 8       | Are classes and functions named clearly to reflect their responsibility? | Yes    | Names clearly indicate the function's purpose (e.g., `calculate_lucky_number`). |
+| 9       | Are large functions or methods broken down into smaller manageable components? | Yes    | Large tasks are split into smaller functions for clarity and maintainability. |
+| 10      | Do classes and modules logically group related functionality together? | Yes    | Functions are grouped logically based on their role in numerology calculation. |
+| 11      | Is there minimal or no duplicated code across the codebase? | Yes    | No duplicate code exists; reusable components ensure efficiency. |
+| 12      | Are there generic and reusable components or functions that reduce the need for similar code in different parts of the application? | Yes    | Functions like `validate_birthday` and `calculate_lucky_number` are reused. |
+| 13      | Are there any constants that we can avoid duplication and improve maintainability? | Yes    | Constants for master numbers and generation ranges ensure maintainability. |
+| 14      | Are there opportunities to simplify complex logic and reduce unnecessary steps in the code? | Yes    | Code avoids unnecessary complexity through clear and concise logic. |
+| 15      | Are there opportunities to refactor repeated patterns into reusable abstractions? | Yes    | Repeated logic for digit summation is abstracted into reusable functions. |
+| 16      | Is the code well-documented and meaningful comments mentioned throughout the code? | Yes    | Comments explain each function's purpose and key logic clearly. |
+| 17      | Are function and variable names self-explanatory and consistent with naming conventions? | Yes    | Naming follows conventions and is self-explanatory for easy readability. |
+| 18      | Is error handling implemented consistently and appropriately across the codebase? | Yes    | Error handling is implemented for invalid inputs and edge cases. |
+| 19      | Is the code formatted and structured consistently according to style guidelines? | Yes    | The code is formatted with consistent indentation and style. |
+| 20      | Are edge cases handled to prevent errors? | Yes    | Edge cases like leap years and invalid dates are properly managed. |
+
+
 
 ### **Revised Module Descriptions**
 No significant revisions were required.
@@ -122,8 +145,24 @@ No significant revisions were required.
 This part organizes test cases by function, separating **Equivalence Partitioning (EP)** and **Boundary Value Analysis (BVA)** test cases.
 
 ---
+#### **1. Function: `is_valid_date`**
 
-#### **1. Function: `calculate_lucky_number`**
+##### **Test Cases (EP)**
+
+| **Sr.** | **Test Case**                  | **Test Data**        | **Expected Output(Bool)**   |
+|---------|--------------------------------|----------------------|------------------------|
+| 1       | Valid date | "01-06-2001"                      | True                                          |
+| 2       | Valid date(Leap year)            | "29-02-2020"                      | True                                         |
+| 3       | Valid date(Non-leap year) | "32-12-2020"                      | False
+| 2       | Invalid date | "32-12-2020"                      | False |
+| 3       | Invalid month | "01-13-2020"                     | False
+| 2       | Invalid day for the month            | "31-04-2020"                      | False                                         |
+
+#### **Boundary Value Analysis (BVA)**
+
+BVA test is not possible due to the dates don't have numeric range.
+
+#### **2. Function: `calculate_lucky_number`**
 
 ##### **Test Cases (EP)**
 
@@ -144,12 +183,9 @@ This part organizes test cases by function, separating **Equivalence Partitionin
 
 ##### **Boundary Value Analysis (BVA)**
 
-| **Sr.** | **Boundary Value**                | **Test Data**     | **Expected Output**   |
-|---------|----------------------------------|-------------------|-----------------------|
-| 1       | Min Test Data for Calculate Lucky Number | "01-01-0001"                       | 3                                          |
-| 2       | Max Test Data for Calculate Lucky Number | "31-12-9999"                       | 7                                          |
+BVA test is not possible due to the input is a date string(DD-MM-YYYY). Dates don't have a numeric range and can't be tested it's BVA like integers or float.
 
-#### **2. Function: `determine_lucky_animal`**
+#### **3. Function: `determine_lucky_animal`**
 
 ##### **Test Cases (EP)**
 
@@ -171,14 +207,11 @@ This part organizes test cases by function, separating **Equivalence Partitionin
 | 14      | Determine Lucky Animal            | 100                               | "Unknown Animal"                           |
 #### **Boundary Value Analysis (BVA)**
 
-| **Sr.** | **Boundary Value**                | **Test Data**    | **Expected Output**   |
-|---------|----------------------------------|------------------|-----------------------|
-| 1       | Min Boundary                     | 0                | "Unknown Animal"      |
-| 2      | Max Invalid Boundary             | 44               | "Unknown Animal"      |
+The input is an interger, however there are no ranges where the function changes. BVA test is not possible.
 
 ---
 
-#### **3. Function: `is_master_number`**
+#### **4. Function: `is_master_number`**
 
 ##### **Test Cases (EP)**
 
@@ -189,17 +222,16 @@ This part organizes test cases by function, separating **Equivalence Partitionin
 | 3       | Master Number (Valid: 33)       | 33               | True                  |
 | 4       | Non-Master Number               | 5                | False                 |
 | 5       | Non-Master Number               | 8                | False                 |
-
-#### **Boundary Value Analysis (BVA)**
-
-| **Sr.** | **Boundary Value**               | **Test Data**    | **Expected Output**   |
-|---------|---------------------------------|------------------|-----------------------|
 | 1       | Just Before Master Number       | 10               | False                 |
 | 2       | Just After Master Number        | 12               | False                 |
 
+#### **Boundary Value Analysis (BVA)**
+
+This funcation is not a continuous range, it's not possible to find the BVA.
+
 ---
 
-#### **4. Function: `find_generation`**
+#### **5. Function: `find_generation`**
 
 ##### **Test Cases (EP)**
 
@@ -244,7 +276,7 @@ This part organizes test cases by function, separating **Equivalence Partitionin
 | 24      | Boundary for Find Generation       | "32-12-2024"                       | "Invalid Date"                             |
 ---
 
-#### **5. Function: `compare_birthdays`**
+#### **6. Function: `compare_birthdays`**
 
 ##### **Test Cases (EP)**
 
@@ -255,9 +287,7 @@ This part organizes test cases by function, separating **Equivalence Partitionin
 
 #### **Boundary Value Analysis (BVA)**
 
-| **Sr.** | **Boundary Value**              | **Test Data**                     | **Expected Output**                        |
-|---------|--------------------------------|-----------------------------------|-------------------------------------------|
-| 1       | Edge Case Min Date             | "01-01-0001", "31-12-9999"        | "Lucky Numbers: Different, Lucky Animals: Different" |
+This function compares two dates with a string that formatted in (DD-MM-YYYY), without a numeric range, it's not possible to apply BVA.
 
 ---
 
@@ -269,13 +299,13 @@ This part organizes test cases by function, separating **Equivalence Partitionin
 ---
 ### Test Implementation and Test Execution
 
-### **Running the Test Code**
+#### **Running the Test Code**
 ```bash
 python3 -m unittest test_numerology.py
 ```
 
-### **Test Results**
-- **Pass**: 5 tests passed.
+#### **Test Results**
+- **Pass**: 6 tests passed.
 - **Fail**: None.
 
 Screenshot : ![Screenshot2](Screenshot2.png)
@@ -284,17 +314,49 @@ Screenshot : ![Screenshot2](Screenshot2.png)
 
 ### Summary
 
+#### Workflow Table (Summary Table)
 
+The following table provides a summary of all modules, covering their design, test implementation, and execution:
+
+| **Module**               | **Design Completed** | **Tests Implemented** | **Execution Verified** |
+|--------------------------|----------------------|-----------------------|------------------------|
+| `validate_birthday`      | Yes                  | Yes                   | Yes                    |
+| `calculate_lucky_number` | Yes                  | Yes                   | Yes                    |
+| `determine_lucky_animal` | Yes                  | Yes                   | Yes                    |
+| `is_master_number`       | Yes                  | Yes                   | Yes                    |
+| `find_generation`        | Yes                  | Yes                   | Yes                    |
+| `compare_birthdays`      | Yes                  | Yes                   | Yes                    |
 
 ---
 
 
 ### Version control
 
+#### **Git Log**
+log.txt file is provied.
+
+#### **Explanation**
+Branches were used to separate development and document. Commits were also made to show what have changes.
 
 ---
 
 ### Discussion
 
+#### **Achievements**
+- Implemented all required functionalities.
+- Comprehensive testing with both black-box and white-box methods.
+- Modular code design for maintainability and scalability.
 
----
+#### **Challenges**
+- Handling invalid inputs required additional error-checking logic.
+- Testing boundary conditions for leap years and generation mappings.
+
+#### **Limitations**
+- The application does not handle inputs outside the `DD-MM-YYYY` format.
+- Limited to years between 1901 and 2024.
+
+#### **Improvements**
+- Future versions could support additional formats and integrate a GUI for improved usability.
+
+
+---5
