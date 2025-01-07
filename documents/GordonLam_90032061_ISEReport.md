@@ -29,7 +29,7 @@ A modular way is used to make the code more easy to manage and test. It have als
 - **Description**: it will calculate the lucky number for a given birthday. A built in python library function (datetime) is used to validate the input date.
 - **Inputs**: A string in the format `DD-MM-YYYY`.
 - **Outputs**: Returns a integer, the lucky number
-- **Edge Case**: It raises a ValueError with a message if the provied date is invalid.
+- **Edge Case**: It raises a ValueError with a message if the provied date is invalid by using the is_valid_date funcation.
 
 ### **determine_lucky_animal()**
 - **Description**: Determine the lucky animal bvased on the lucky number
@@ -47,13 +47,13 @@ A modular way is used to make the code more easy to manage and test. It have als
 - **Description**: Determine the generation of person based on their birth year.
 - **Inputs**: A string in the format `DD-MM-YYYY`.
 - **Outputs**: A string, the generation name.
-- **Edge Case**: It raises a ValueError if the birthdata is invalid. It return "Unknown Generation" if the year is not found in the range.
+- **Edge Case**: It raises a ValueError if the birthdata is invalid by using the is_valid_date funcation and return "Unknown Generation" if the year is not found in the range.
 
 ### **compare_birthdays()**
 - **Description**: Compares two birthdays to check if their lucky numbers and animals are the same.
 - **Inputs**: Two strings in the format `DD-MM-YYYY`.
 - **Outputs**: String, the comparison result.
-- **Edge Case**: It raises a ValueError if the birthdays is invalid.
+- **Edge Case**: It raises a ValueError if the birthdays is invalid by using the is_valid_date funcation.
 
 ### Design Decisions
 Modular Design: The modular design ensures reusability, readability, and easier testing. 
@@ -108,31 +108,63 @@ Sr. 1-5: Coupling. 6-10: Low cohesion, 11-15: Redundancy, 15-20: Additional cons
 
 | **Sr.** | **Question**                                                      | **Y/N** | **Description**                                                     |
 |---------|------------------------------------------------------------------|--------|---------------------------------------------------------------------|
-| 1       | Does each function or method operate independently without requiring excessive information from other functions or methods? | Yes    | All functions are designed to work independently using minimal input. |
-| 2       | Does each function or method have a minimal number of parameters (ideally fewer than 5)? | Yes    | All functions use fewer than 5 parameters for simplicity and clarity. |
-| 3       | Do modules communicate with each other using well-defined interfaces rather than accessing each other’s internal data? | Yes    | Modules interact only through defined function calls and parameters. |
-| 4       | Are functions or methods dependent on external libraries only where necessary? | Yes    | Only standard Python libraries are used for date validation and calculations. |
-| 5       | Are dependencies between modules or components clearly defined? | Yes    | Dependencies are defined clearly, and modules rely on simple, independent logic. |
-| 6       | Does each class/function have a single, well-defined responsibility? | Yes    | Each function is designed to handle a single, specific task. |
-| 7       | Are functions or methods concise and focused on a single task? | Yes    | Functions are concise and focus on a single aspect of numerology calculation. |
-| 8       | Are classes and functions named clearly to reflect their responsibility? | Yes    | Names clearly indicate the function's purpose (e.g., `calculate_lucky_number`). |
-| 9       | Are large functions or methods broken down into smaller manageable components? | Yes    | Large tasks are split into smaller functions for clarity and maintainability. |
-| 10      | Do classes and modules logically group related functionality together? | Yes    | Functions are grouped logically based on their role in numerology calculation. |
-| 11      | Is there minimal or no duplicated code across the codebase? | Yes    | No duplicate code exists; reusable components ensure efficiency. |
+| 1       | Does each function or method operate independently without requiring excessive information from other functions or methods? | Yes    | All funcation are operate independently. |
+| 2       | Does each function or method have a minimal number of parameters (ideally fewer than 5)? | Yes    | All functions use fewer than 5 parameters.|
+| 3       | Do modules communicate with each other using well-defined interfaces rather than accessing each other’s internal data? | Yes    | Modules communicate with each other using well-defined interfaces.|
+| 4       | Are functions or methods dependent on external libraries only where necessary? | Yes    | Only standard Python libraries are used for main funcation and unittest is used for testing. |
+| 5       | Are dependencies between modules or components clearly defined? | Yes    | Dependencies are defined clearly.|
+| 6       | Does each class/function have a single, well-defined responsibility? | Yes    | Each function have a single, well-defined responsibility.|
+| 7       | Are functions or methods concise and focused on a single task? | Yes    | Functions are concise and focus on a single task.|
+| 8       | Are classes and functions named clearly to reflect their responsibility? | Yes    | funcations are named clearly (e.g., `calculate_lucky_number`). |
+| 9       | Are large functions or methods broken down into smaller manageable components? | Yes    | Large function are splite down into smaller functions for better maintenance. |
+| 10      | Do classes and modules logically group related functionality together? | Yes    | Functions are grouped logically based on their role. |
+| 11      | Is there minimal or no duplicated code across the codebase? | Yes    | No duplicate code are used. |
 | 12      | Are there generic and reusable components or functions that reduce the need for similar code in different parts of the application? | Yes    | Functions like `validate_birthday` and `calculate_lucky_number` are reused. |
-| 13      | Are there any constants that we can avoid duplication and improve maintainability? | Yes    | Constants for master numbers and generation ranges ensure maintainability. |
-| 14      | Are there opportunities to simplify complex logic and reduce unnecessary steps in the code? | Yes    | Code avoids unnecessary complexity through clear and concise logic. |
-| 15      | Are there opportunities to refactor repeated patterns into reusable abstractions? | Yes    | Repeated logic for digit summation is abstracted into reusable functions. |
-| 16      | Is the code well-documented and meaningful comments mentioned throughout the code? | Yes    | Comments explain each function's purpose and key logic clearly. |
-| 17      | Are function and variable names self-explanatory and consistent with naming conventions? | Yes    | Naming follows conventions and is self-explanatory for easy readability. |
+| 13      | Are there any constants that we can avoid duplication and improve maintainability? | Yes    | Such as constants for master numbers and generation ranges.|
+| 14      | Are there opportunities to simplify complex logic and reduce unnecessary steps in the code? | Yes    | Code avoids unnecessary complexity  logic. |
+| 15      | Are there opportunities to refactor repeated patterns into reusable abstractions? | Yes    | Repeated logic is abstracted into reusable functions. |
+| 16      | Is the code well-documented and meaningful comments mentioned throughout the code? | Yes    | Every funcation have give a comments to explain what and how does it do.|
+| 17      | Are function and variable names self-explanatory and consistent with naming conventions? | Yes    | Funcation follows it for better easy readability. |
 | 18      | Is error handling implemented consistently and appropriately across the codebase? | Yes    | Error handling is implemented for invalid inputs and edge cases. |
-| 19      | Is the code formatted and structured consistently according to style guidelines? | Yes    | The code is formatted with consistent indentation and style. |
-| 20      | Are edge cases handled to prevent errors? | Yes    | Edge cases like leap years and invalid dates are properly managed. |
+| 19      | Is the code formatted and structured consistently according to style guidelines? | Yes    | The code is formatted with consistent style. |
+| 20      | Are edge cases handled to prevent errors? | Yes    | Edge cases like leap years and invalid dates are handled. |
 
 
 
 ### **Revised Module Descriptions**
-No significant revisions were required.
+
+#### **validate_birthday**
+- **Changes Made**:
+  - Added edge case for invalid formats, leap years and non-existent dates.
+- **Reason for Revision**: Not letting program crash if user type an invalid date.
+
+#### **calculate_lucky_number**
+- **Changes Made**:
+  - Uses validate_birthday as a edge case for invalid dates.
+- **Reason for Revision**: Show the user that it's a invalid input.
+
+#### **determine_lucky_animal**
+- **Changes Made**:
+  - Handling for out-of-range values.
+- **Reason for Revision**: Show the user it's not a vaild lucky animal.
+
+#### **is_master_number**
+- **Changes Made**:
+  - Improve readability and maintainability.
+- **Reason for Revision**: Future edit in the code will be easier
+
+#### **find_generation**
+- **Changes Made**:
+  - Uses validate_birthday as a edge case for invalid dates.
+  - Edge case for not in range cases.
+- **Reason for Revision**: Show the user error with the input before 1999 and after 2099 years.
+
+#### **compare_birthdays**
+- **Changes Made**:
+  - Uses validate_birthday as a edge case for invalid dates for birthdays1 and birthdays2.
+  - Better logic to handle invalid inputs.
+- **Reason for Revision**: Improves usability and better edge case handle.
+
 
 
 ---
@@ -333,7 +365,8 @@ The following table provides a summary of all modules, covering their design, te
 ### Version control
 
 #### **Git Log**
-log.txt file is provied.
+log.log file is provied.
+Open the file to see branchs and commits.
 
 #### **Explanation**
 Branches were used to separate development and document. Commits were also made to show what have changes.
@@ -343,16 +376,22 @@ Branches were used to separate development and document. Commits were also made 
 ### Discussion
 
 #### **Achievements**
-
+- Modular code design for test error and maintain.
+- testing with both black-box and white-box testing.
+- Implemented all required function.
 
 #### **Challenges**
+- handling all diffenet type of invalid inputs with edge case.
+- Not every funcation can test with BVA.
 
 
 #### **Limitations**
-
+- It only accept the input with the format of "DD-MM-YYYY"
+- Only years from 1901-2024 are accepted for finding generation name
 
 #### **Improvements**
-
+- Have a better hud for user.
+- support different format of date.
 
 
 ---
