@@ -1,5 +1,3 @@
-# ISEN1000 Numerology Project
-
 ## Description
 This project calculates a person's lucky number based on their birth date, determines their lucky animal, and checks if their number is a master number. It also categorizes the person into a generation based on their birth year.
 
