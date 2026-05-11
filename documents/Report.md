@@ -1,13 +1,5 @@
 # ISEN1000 Assignment Report
 
-## Cover Page
-
-**Assessment Name**: ISEN1000 Numerology Analysis Project  
-**Name**: Gordon Lam  
-**Curtin Student ID**: 90032061  
-**Practical Class**: trimerster 3 2024
-
----
 
 ## Introduction
 
