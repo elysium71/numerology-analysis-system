@@ -186,13 +186,25 @@ This part organizes test cases by function, separating **Equivalence Partitionin
 | 1       | Valid date | "01-06-2001"                      | True                                          |
 | 2       | Valid date(Leap year)            | "29-02-2020"                      | True                                         |
 | 3       | Valid date(Non-leap year) | "32-12-2020"                      | False
-| 2       | Invalid date | "32-12-2020"                      | False |
-| 3       | Invalid month | "01-13-2020"                     | False
-| 2       | Invalid day for the month            | "31-04-2020"                      | False                                         |
+| 4       | Invalid date | "32-12-2020"                      | False |
+| 5       | Invalid month | "01-13-2020"                     | False
+| 6       | Invalid day for the month            | "31-04-2020"                      | False           
+| 7       | Student name based date           | "LA-M-2061"         | False   |                              |
 
-#### **Boundary Value Analysis (BVA)**
 
-BVA test is not possible due to the dates don't have numeric range.
+##### **Boundary Value Analysis (BVA)**
+
+| **Sr.** | **Boundary Value**               | **Test Data**        | **Expected Output**   |
+|---------|---------------------------------|----------------------|-----------------------|
+| 1       | Boundary for day (lower bound)   | "01-01-2023"         | True                  |
+| 2       | Boundary for day (upper bound)   | "31-01-2023"         | True                  |
+| 3       | Boundary beyond valid day        | "32-01-2023"         | False                 |
+| 4       | Boundary for month (lower bound) | "01-01-2023"         | True                  |
+| 5       | Boundary for month (upper bound) | "01-12-2023"         | True                  |
+| 6       | Boundary beyond valid month      | "01-13-2023"         | False                 |
+| 7       | Boundary for year (lower bound)  | "01-01-1901"         | True                  |
+| 8       | Boundary for year (upper bound)  | "31-12-2024"         | True                  |
+
 
 #### **2. Function: `calculate_lucky_number`**
 
@@ -254,12 +266,17 @@ The input is an interger, however there are no ranges where the function changes
 | 3       | Master Number (Valid: 33)       | 33               | True                  |
 | 4       | Non-Master Number               | 5                | False                 |
 | 5       | Non-Master Number               | 8                | False                 |
-| 1       | Just Before Master Number       | 10               | False                 |
-| 2       | Just After Master Number        | 12               | False                 |
 
 #### **Boundary Value Analysis (BVA)**
 
-This funcation is not a continuous range, it's not possible to find the BVA.
+| **Sr.** | **Test Case**                    | **Test Data**    | **Expected Output**   |
+|---------|---------------------------------|------------------|-----------------------|
+| 1       | Just Before Master Number     11  | 10               | False                 |
+| 2       | Just After Master Number       11 | 12               | False                 |
+| 1       | Just Before Master Number      22 | 21               | False                 |
+| 2       | Just After Master Number       22 | 23               | False                 |
+| 1       | Just Before Master Number      33 | 32               | False                 |
+| 2       | Just After Master Number       33 | 34               | False                 |
 
 ---
 
@@ -277,6 +294,7 @@ This funcation is not a continuous range, it's not possible to find the BVA.
 | 6       | Generation Alpha                | "19-09-2017"         | "Generation Alpha"    |
 | 7       | Invalid Date (Before 1900)      | "01-01-1700"         | "Invalid Date"        |
 | 8       | Invalid Date (After 2099)       | "01-01-2100"         | "Invalid Date"        |
+| 9       | Student ID-based date           | "20-06-2061"         | "Invalid Date"   |
 
 #### **Boundary Value Analysis (BVA)**
 
@@ -316,6 +334,9 @@ This funcation is not a continuous range, it's not possible to find the BVA.
 |---------|--------------------------------|-----------------------------------|-------------------------------------------|
 | 1       | Compare Different Birthdays    | "01-06-2001", "15-08-1995"        | "Lucky Numbers: Different, Lucky Animals: Different" |
 | 2       | Compare Same Birthdays         | "01-06-2005", "01-06-2005"        | "Lucky Numbers: Same, Lucky Animals: Same" |
+| 3       | Compare Same Birthdays         | "01-20-2005", "01-06-2005"        | "Invalid Date, Lucky Animals: Same" |
+| 4       | Compare Same Birthdays         | "01-06-2005", "01-20-2005"        | "Lucky Numbers: Same, Invalid Date" |
+
 
 #### **Boundary Value Analysis (BVA)**
 
@@ -324,7 +345,41 @@ This function compares two dates with a string that formatted in (DD-MM-YYYY), w
 ---
 
 ### White-box test cases
+This part is to test the internal code structure, logic.
 
+#### **1. Function: `is_valid_date`**
+
+**Paths Covered**:
+- Valid date.
+- Invalid date (non-existent day).
+- Invalid month.
+- Leap year and non-leap year.
+
+##### **Test Cases**
+
+| **Sr.** | **Path**                            | **Test Data**    | **Expected Output** |
+|---------|-------------------------------------|------------------|---------------------|
+| 1       | Valid date                          | "01-06-2001"     | True                |
+| 2       | Invalid day                         | "32-12-2020"     | False               |
+| 3       | Invalid month                       | "01-13-2020"     | False               |
+| 4       | Leap year (valid date)              | "29-02-2020"     | True                |
+| 5       | Non-leap year (invalid date)        | "29-02-2019"     | False               |
+
+#### **2. Function: `calculate_lucky_number`**
+
+**Paths Covered**:
+- Valid date, resulting in a single-digit number.
+- Valid date, resulting in a master number.
+- Invalid date.
+
+##### **Test Cases**
+
+| **Sr.** | **Path**                                | **Test Data**     | **Expected Output** |
+|---------|-----------------------------------------|-------------------|---------------------|
+| 1       | Valid date, single-digit lucky number   | "01-06-2001"      | 1                   |
+| 2       | Valid date, master number (11)          | "01-06-2002"      | 11                  |
+| 3       | Valid date, master number (33)          | "09-09-1905"      | 33                  |
+| 4       | Invalid date                            | "32-13-2024"      | "Invalid Date"      |
 
 
 
@@ -346,18 +401,18 @@ Screenshot : ![Screenshot2](Screenshot2.png)
 
 ### Summary
 
-#### Workflow Table (Summary Table)
+#### Workflow Table (Traceability Matrix)
 
 The following table provides a summary of all modules, covering their design, test implementation, and execution:
 
-| **Module**               | **Design Completed** | **Tests Implemented** | **Execution Verified** |
-|--------------------------|----------------------|-----------------------|------------------------|
-| `validate_birthday`      | Yes                  | Yes                   | Yes                    |
-| `calculate_lucky_number` | Yes                  | Yes                   | Yes                    |
-| `determine_lucky_animal` | Yes                  | Yes                   | Yes                    |
-| `is_master_number`       | Yes                  | Yes                   | Yes                    |
-| `find_generation`        | Yes                  | Yes                   | Yes                    |
-| `compare_birthdays`      | Yes                  | Yes                   | Yes                    |
+| **Module Name**           | **BB (EP)** | **BB (BVA)** | **WB**   | **Data Type**       | **Form of Input/Output** | **EP** | **BVA** | **White-Box** |
+|---------------------------|-------------|--------------|----------|---------------------|--------------------------|--------|--------|---------------|
+| `is_valid_date`           | Done        | Done         | Done     | String              | Input: "DD-MM-YYYY"      | Yes    | Yes    | Yes           |
+| `calculate_lucky_number`  | Done        | Not Done         | Done     | String              | Input: "DD-MM-YYYY"      | Yes    | No    | Yes           |
+| `determine_lucky_animal`  | Done        | Not Done     | Not Done | Integer             | Input: Integer           | Yes    | No     | No            |
+| `is_master_number`        | Done        | Done     | Not Done | Integer             | Input: Integer           | Yes    | Yes | No            |
+| `find_generation`         | Done        | Done         | Not Done     | String              | Input: "DD-MM-YYYY"      | Yes    | Yes    | No           |
+| `compare_birthdays`       | Done        | Not Done     | Not Done | String (2 inputs)   | Input: "DD-MM-YYYY"      | Yes    | No     | No            |
 
 ---
 

@@ -1,6 +1,5 @@
 from datetime import datetime  # A combination of a date and a time
 
-
 def is_valid_date(date_str):
     """
     Check if the given date string is a valid date in the format DD-MM-YYYY.
@@ -14,21 +13,18 @@ def is_valid_date(date_str):
         return True  # If no exception, it's a valid date
     except ValueError:
         return False  # If ValueError is raised, the date is invalid
-        
+
 def calculate_lucky_number(birthday):
     """
     Calculate the lucky number for a given birthday.
     :param birthday: str, in the format 'DD-MM-YYYY'
     :return: int, the lucky number or "Invalid Date" for invalid dates
     """
-    # Edge case: Check if the date is valid
-    try:
-        day, month, year = birthday.split('-')
-        datetime(int(year), int(month), int(day))  # Validates the date
-    except ValueError:
-        return "Invalid Date"  # Return "Invalid Date" instead of raising an exception
-    
+    if not is_valid_date(birthday):
+        return "Invalid Date"  # Use is_valid_date for validation
+
     # Sum digits of day, month, and year
+    day, month, year = birthday.split('-')
     lucky_number = sum(int(digit) for digit in day) + \
                    sum(int(digit) for digit in month) + \
                    sum(int(digit) for digit in year)
@@ -69,13 +65,10 @@ def find_generation(birthday):
     :param birthday: str, in the format 'DD-MM-YYYY'
     :return: str, the generation name or "Invalid Date" for invalid dates
     """
-    # Edge case: Check if the date is valid
-    try:
-        day, month, year = birthday.split('-')
-        datetime(int(year), int(month), int(day))  # Validates the date
-    except ValueError:
-        return "Invalid Date"  # Return "Invalid Date" instead of raising an exception
+    if not is_valid_date(birthday):
+        return "Invalid Date"  # Use is_valid_date for validation
 
+    year = int(birthday.split('-')[2])
     generation_map = {
         range(1901, 1946): "Silent Generation",
         range(1946, 1965): "Baby Boomers",
@@ -84,18 +77,16 @@ def find_generation(birthday):
         range(1995, 2010): "Generation Z",
         range(2010, 2025): "Generation Alpha"
     }
-    
-    year = int(birthday.split('-')[2])
 
-    # Add check for out-of-range years
+    # Check for out-of-range years
     if year < 1901 or year > 2025:
-        return "Invalid Date"  # Return "Invalid Date" if year is out of valid range
+        return "Invalid Date"
 
     for year_range, generation in generation_map.items():
         if year in year_range:
             return generation
 
-    return "Unknown Generation"  # Return default if no match
+    return "Unknown Generation"  # Default if no match
 
 def compare_birthdays(birthday1, birthday2):
     """
@@ -104,12 +95,8 @@ def compare_birthdays(birthday1, birthday2):
     :param birthday2: str, second birthday in the format 'DD-MM-YYYY'
     :return: str, the comparison result
     """
-    # Edge case: Check if the dates are valid
-    try:
-        datetime.strptime(birthday1, "%d-%m-%Y")
-        datetime.strptime(birthday2, "%d-%m-%Y")
-    except ValueError:
-        raise ValueError("One or both dates are in an invalid format.")
+    if not is_valid_date(birthday1) or not is_valid_date(birthday2):
+        raise ValueError("Invalid Date")  # Use is_valid_date for validation
     
     # Calculate lucky numbers and animals for each birthday
     lucky_number1 = calculate_lucky_number(birthday1)
@@ -128,5 +115,4 @@ def compare_birthdays(birthday1, birthday2):
               "Lucky Animals: " + comparison['Lucky Animals'])
 
     return result
-
 

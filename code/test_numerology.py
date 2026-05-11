@@ -10,29 +10,34 @@ class TestNumerologyFunctions(unittest.TestCase):
         self.invalid_date = "00-11-2001"
         print("Setup complete.")
 
-    def tearDown(self):
-        """Clean up resources after each test."""
-        self.default_test_data = None
-        print("Teardown complete.")
-
     def test_is_valid_date(self):
         """Test the is_valid_date function."""
         test_cases = [
-            ("01-06-2001", True),
+            (self.valid_date, True),
             ("29-02-2020", True),  # Leap year
             ("29-02-2019", False),  # Non-leap year
             ("32-12-2020", False),  # Invalid day
             ("01-13-2020", False),  # Invalid month
             ("31-04-2020", False),  # Invalid day for the month
+            (self.invalid_date, False),  # Student name based date
+
+            # BVA testing
+            ("01-01-2023", True),  # Boundary for day (lower bound)
+            ("31-01-2023", True),  # Boundary for day (upper bound)
+            ("32-01-2023", False),  # Boundary beyond valid day
+            ("01-01-2023", True),  # Boundary for month (lower bound)
+            ("01-12-2023", True),  # Boundary for month (upper bound)
+            ("01-13-2023", False),  # Boundary beyond valid month
+            ("01-01-1901", True),  # Boundary for year (lower bound)
+            ("31-12-2024", True),  # Boundary for year (upper bound)
         ]
         for date, expected in test_cases:
             with self.subTest(date=date):
                 self.assertEqual(is_valid_date(date), expected)
-
-
     def test_calculate_lucky_number(self):
         """Test the calculate_lucky_number function."""
         test_cases = [
+            (self.valid_date,1),
             ("01-06-2001", 1),
             ("01-06-2003", 3),
             ("01-06-2004", 4),
@@ -80,8 +85,14 @@ class TestNumerologyFunctions(unittest.TestCase):
             (33, True),
             (5, False),
             (8, False),
-            (10, False),  # Just before master number
-            (12, False),  # Just after master number
+            
+            #BVA test
+            (10, False),
+            (12, False),  
+            (21, False),
+            (23, False),  
+            (32, False),
+            (34, False),  
         ]
         for number, expected in test_cases:
             with self.subTest(number=number):
@@ -90,6 +101,7 @@ class TestNumerologyFunctions(unittest.TestCase):
     def test_find_generation(self):
         """Test the find_generation function."""
         test_cases = [
+            (self.valid_date, "Generation Z"),
             ("19-09-1907", "Silent Generation"),
             ("19-09-1950", "Baby Boomers"),
             ("19-09-1967", "Generation X"),
@@ -98,6 +110,8 @@ class TestNumerologyFunctions(unittest.TestCase):
             ("19-09-2017", "Generation Alpha"),
             ("01-01-1700", "Invalid Date"),
             ("01-01-2100", "Invalid Date"),
+            (self.invalid_date, "Invalid Date"),
+            ("20-06-2061", "Invalid Date"), #Student ID-based date
             
             # BVA testing
             ("00-01-1901", "Invalid Date"),
@@ -140,6 +154,12 @@ class TestNumerologyFunctions(unittest.TestCase):
                 result = compare_birthdays(date1, date2)
                 self.assertIn("Lucky Numbers: " + expected, result)
                 self.assertIn("Lucky Animals: " + expected, result)
+                
+    def tearDown(self):
+        """Clean up resources after each test."""
+        self.default_test_data = None
+        print("Teardown complete.")
+
 
 
 if __name__ == '__main__':

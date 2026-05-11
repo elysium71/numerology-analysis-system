@@ -1,0 +1,252 @@
+*   commit a56c1c9f4168ac2a26b74d14a4ba7b7be7b06f02
+|\  Merge: 11b67e0 d3e2d1a
+| | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | Date:   Tue Jan 7 11:39:07 2025 +0800
+| | 
+| |     Merge branch 'documents' into master
+| | 
+| * commit d3e2d1a9ca32cd3a440a37f40818e094b9d05f0b
+| | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | Date:   Tue Dec 31 01:45:07 2024 +0800
+| | 
+| |     Edited README file
+| |   
+| *   commit 6b17a96c85a1dfa89473659e68b27a560ec239bf
+| |\  Merge: 8a64762 abd2dfd
+| | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | Date:   Wed Dec 18 22:35:59 2024 +0800
+| | | 
+| | |     Merge branch 'development'
+| | | 
+* | | commit 11b67e082d572d449c3e6c34a359f33d79a48379
+| | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | Date:   Tue Jan 7 11:35:36 2025 +0800
+| | | 
+| | |     Added White box testing in documents.
+| | | 
+* | | commit 309bac5be30b1343fc5be3dd639b477b69786221
+| | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | Date:   Tue Dec 31 01:39:51 2024 +0800
+| | | 
+| | |     Edited checklist in repor file.
+| | | 
+* | | commit d200bbd28e284282c8c2393677acc29a4b6731f9
+| | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | Date:   Fri Dec 27 06:11:11 2024 +0800
+| | | 
+| | |     Added Version control in documents
+| | | 
+* | | commit 04ee3138ede2b9890af19fbb308e912c66f1824f
+| | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | Date:   Wed Dec 18 22:54:05 2024 +0800
+| | | 
+| | |     removed uselss file.
+| | | 
+* | | commit a244d69997d2be9741e4b9606a5f9c64217669f3
+| | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | Date:   Wed Dec 18 22:51:23 2024 +0800
+| | | 
+| | |     Added backup file.
+| | | 
+* | | commit f3842e09138d8236296aac094e0798909800d59d
+| | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | Date:   Wed Dec 18 22:50:46 2024 +0800
+| | | 
+| | |     Fixed BVA cases in report file.
+| | | 
+* | | commit 6fc043b7f1bcd035124a1254516d1a23dd46ed22
+| | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | Date:   Tue Dec 17 12:39:58 2024 +0800
+| | | 
+| | |     Added screenshot2.png and edited test Implementation on report.
+| | | 
+* | | commit 1d87e1cb41440394f659d36e6965e7c2a849584e
+| | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | Date:   Tue Dec 17 10:24:39 2024 +0800
+| | | 
+| | |     Added white box testing.
+| | | 
+* | | commit 448fbf854a36631bd745526ce0d0b1a45b28a4ff
+| | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | Date:   Tue Dec 17 08:54:54 2024 +0800
+| | | 
+| | |     Edited Report, version_plan file and added screenshot1.png
+| | |     
+| | |     d
+| | | 
+* | | commit 6b83fa5ceb99eb3c0498c7d6b4d33a3927bf06e2
+| | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | Date:   Tue Dec 17 01:13:41 2024 +0800
+| | | 
+| | |     Edited version_plan.md file for adding documents in branches.
+| | | 
+* | | commit ad7f0a5976e24304aecf988e3c8e83267901b554
+|/ /  Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| |   Date:   Mon Dec 16 10:03:38 2024 +0800
+| |   
+| |       Update .gitignore to exclude README.md.backup
+| | 
+* | commit 8a647624e5b66f1f4eb8098b44897a9166d7e780
+| | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | Date:   Sun Dec 15 20:18:26 2024 +0000
+| | 
+| |     Added v3 on README file.
+| |   
+* |   commit 65f1c4e15f34b4ef46b97ba560261fb8925ca60d
+|\ \  Merge: 0a41aad 3050e48
+| | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | Date:   Sun Dec 15 05:11:26 2024 +0800
+| | | 
+| | |     Merge branch 'development'
+| | |   
+* | |   commit 0a41aad8bca1e7d62ed0520fb0df230e37fefd14
+|\ \ \  Merge: ac0d0bd 9848911
+| | | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | | Date:   Sun Dec 15 04:30:08 2024 +0800
+| | | | 
+| | | |     Merge branch 'development'
+| | | | 
+* | | | commit ac0d0bd3f2d6462e573357f1a82ce1466cfe45e3
+| | | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | | Date:   Sun Dec 15 04:18:36 2024 +0800
+| | | | 
+| | | |     Edited README file
+| | | | 
+* | | | commit 0fb09400ebd49bf3fac7bd9ce1911f54aa6da739
+| | | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | | Date:   Sun Dec 15 04:16:16 2024 +0800
+| | | | 
+| | | |     Added report file.
+| | | | 
+* | | | commit 6447f23bdd712470a8e347e23f54aac28b8b224c
+| | | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | | Date:   Sun Dec 15 04:09:26 2024 +0800
+| | | | 
+| | | |     Added .gitignore file
+| | | | 
+* | | | commit 0426fde84f4a3619b67d5a9050bc844c72dd7455
+| | | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | | Date:   Sun Dec 15 04:07:35 2024 +0800
+| | | | 
+| | | |     Added version control plan
+| | | |   
+* | | |   commit d3a0ed74d3c78211b3839adef34afbd5830a655e
+|\ \ \ \  Merge: 54e6251 522f380
+| | | | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | | | Date:   Sun Dec 15 04:05:12 2024 +0800
+| | | | | 
+| | | | |     Merge branch 'development'
+| | | | |   
+| | | | | * commit 63fb013a5e125fa61835f7c583c982d9ee2e2343
+| | | | | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | | | | Date:   Wed Dec 18 23:00:15 2024 +0800
+| | | | | | 
+| | | | | |     removed useless file.
+| | | | | | 
+| | | | | * commit d884aba2141902e8d269289a074ec7025a383991
+| | | | |/  Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | | |   Date:   Wed Dec 18 22:52:51 2024 +0800
+| | | | |   
+| | | | |       fixeddisplay error
+| | | | | 
+| | | | * commit abd2dfd27ad509bad2566d0936443fd141f90d14
+| | | | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | | | Date:   Wed Dec 18 22:35:44 2024 +0800
+| | | | | 
+| | | | |     Added setup, teardown funcation and bva case.
+| | | | | 
+| | | | * commit 583a3c9a5a286e7d60667c17e209ae0d1f953de1
+| | | | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | | | Date:   Tue Dec 17 12:42:23 2024 +0800
+| | | | | 
+| | | | |     Debugged for is_valid_date funcation
+| | | | | 
+| | | | * commit c26b2444396bc008edfe1d3d2b6c9c5795e0451d
+| | | |/  Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | |   Date:   Tue Dec 17 08:56:35 2024 +0800
+| | | |   
+| | | |       Fixed is_valid_date funcation
+| | | | 
+| | | * commit 3050e48517bdad59f42c9286aad3e2de47fbe611
+| | | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | | Date:   Sun Dec 15 05:10:44 2024 +0800
+| | | | 
+| | | |     Added comment on test_numerology.py
+| | | | 
+| | | * commit b769960b9296e4911b0cf97ac078095cac8ddede
+| | | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | | Date:   Sun Dec 15 05:04:16 2024 +0800
+| | | | 
+| | | |     Added refactoring.
+| | | | 
+| | | * commit efebd7f85296847d9ced062021e1d7f05ef9d9cd
+| | | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | | Date:   Sun Dec 15 04:58:47 2024 +0800
+| | | | 
+| | | |     Added comment on main.py.
+| | | | 
+| | | * commit 323e6f91b75dc23ecd913d4fbb94b60404ed543b
+| | |/  Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | |   Date:   Sun Dec 15 04:55:26 2024 +0800
+| | |   
+| | |       Added setup and teardown.
+| | | 
+| | * commit 98489119a3e675152946ae6f24ed2908b82d8787
+| | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | Date:   Sun Dec 15 04:29:51 2024 +0800
+| | | 
+| | |     Added Requirements.
+| | | 
+| | * commit bdc5690009f0041012f03f8214218c833fb0b840
+| | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | Date:   Sun Dec 15 04:28:07 2024 +0800
+| | | 
+| | |     Added edge case in testing.
+| | | 
+| | * commit 45acf5d5da4380e1ad2060481d5dba74df183e0a
+| | | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | | Date:   Sun Dec 15 04:27:25 2024 +0800
+| | | 
+| | |     Added comment for understanding.
+| | | 
+| | * commit ef576114a5dfad51db95f9c6ae435b5edb2a1623
+| |/  Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| |   Date:   Sun Dec 15 04:26:31 2024 +0800
+| |   
+| |       Fixed output problem.
+| | 
+| * commit 522f380b8ea014f2ccddf9f408c8fff11868c64d
+| | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | Date:   Sun Dec 15 04:04:43 2024 +0800
+| | 
+| |     Added main.py for user to input.
+| | 
+| * commit fb7e2acc65bd71c86a3a54b959a98ae5b9bd8b04
+| | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | Date:   Sun Dec 15 04:04:15 2024 +0800
+| | 
+| |     Added more test case.
+| | 
+| * commit be2f7e3f31681f101ec36e204a3ff0207d08d816
+| | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | Date:   Sun Dec 15 04:03:51 2024 +0800
+| | 
+| |     Added Edges cases.
+| | 
+| * commit 933fa820785bdc8397e1e2f9157cd9a45eb043ba
+| | Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+| | Date:   Sun Dec 15 04:02:47 2024 +0800
+| | 
+| |     Added test code using unittest.
+| | 
+| * commit 49d3baff61838c22b878a9e7e5f6c934a895a9bd
+|/  Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+|   Date:   Sun Dec 15 04:01:45 2024 +0800
+|   
+|       Added numerologu_calculator for funcation.
+| 
+* commit 54e625197f4aeb52480143cbd2ec95ab0498099d
+  Author: Lam Gordon <90032061@study.curtincollege.edu.au>
+  Date:   Sun Dec 15 04:00:12 2024 +0800
+  
+      Initial commit: Added README.md
